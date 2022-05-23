@@ -2,20 +2,20 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "3.26.0"
+//      version = "3.26.0"
     }
     random = {
       source  = "hashicorp/random"
-      version = "3.0.1"
+//      version = "3.0.1"
     }
   }
   required_version = "~> 1.0"
 
   backend "remote" {
-    organization = "REPLACE_ME"
+    organization = "GoWeb-Terraform-AWS"
 
     workspaces {
-      name = "REPLACE_ME"
+      name = "demo-github-actions"
     }
   }
 }
@@ -52,5 +52,5 @@ resource "aws_security_group" "web-sg" {
 }
 
 output "web-address" {
-  value = "${aws_instance.web.public_dns}:8080"
+  value = "http://${aws_instance.web.public_dns}:8080"
 }
